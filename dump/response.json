@@ -1,0 +1,1015 @@
+{
+  "took": 76,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 5,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "nixos-42-23.05-9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "_type": "_doc",
+        "_id": "-EKUAokBzICT7E5lL1Iw",
+        "_score": 110.07156,
+        "_source": {
+          "type": "package",
+          "package_attr_name": "rustup",
+          "package_attr_set": "No package set",
+          "package_pname": "rustup",
+          "package_pversion": "1.26.0",
+          "package_platforms": [
+            "x86_64-freebsd13",
+            "powerpc64le-linux",
+            "i686-linux",
+            "armv7a-darwin",
+            "armv7l-netbsd",
+            "x86_64-solaris",
+            "i686-netbsd",
+            "powerpc64-linux",
+            "i686-freebsd13",
+            "aarch64-darwin",
+            "i686-darwin",
+            "armv7a-linux",
+            "m68k-linux",
+            "x86_64-openbsd",
+            "riscv32-linux",
+            "x86_64-redox",
+            "riscv64-linux",
+            "armv6l-linux",
+            "armv7l-linux",
+            "mipsel-linux",
+            "aarch64-netbsd",
+            "x86_64-netbsd",
+            "armv6l-netbsd",
+            "x86_64-windows",
+            "wasm32-wasi",
+            "armv5tel-linux",
+            "powerpc-netbsd",
+            "i686-windows",
+            "x86_64-darwin",
+            "mips64el-linux",
+            "i686-openbsd",
+            "aarch64-linux",
+            "s390x-linux",
+            "x86_64-linux"
+          ],
+          "package_outputs": [
+            "out"
+          ],
+          "package_default_output": "out",
+          "package_programs": [
+            "cargo",
+            "rustup",
+            "rustfmt",
+            "rust-gdbgui",
+            "rust-gdb",
+            "clippy-driver",
+            "rustc",
+            "rust-analyzer",
+            "rls",
+            "rustdoc",
+            "rust-lldb",
+            "cargo-miri",
+            "cargo-fmt",
+            "cargo-clippy"
+          ],
+          "package_license": [
+            {
+              "url": "https://spdx.org/licenses/Apache-2.0.html",
+              "fullName": "Apache License 2.0"
+            },
+            {
+              "url": "https://spdx.org/licenses/MIT.html",
+              "fullName": "MIT License"
+            }
+          ],
+          "package_license_set": [
+            "Apache License 2.0",
+            "MIT License"
+          ],
+          "package_maintainers": [
+            {
+              "name": "Jörg Thalheim",
+              "github": "Mic92",
+              "email": "joerg@thalheim.io"
+            }
+          ],
+          "package_maintainers_set": [
+            "Jörg Thalheim"
+          ],
+          "package_description": "The Rust toolchain installer",
+          "package_longDescription": null,
+          "package_hydra": null,
+          "package_system": "x86_64-linux",
+          "package_homepage": [
+            "https://www.rustup.rs/"
+          ],
+          "package_position": "pkgs/development/tools/rust/rustup/default.nix:102"
+        },
+        "sort": [
+          110.07156,
+          "rustup",
+          "1.26.0"
+        ],
+        "matched_queries": [
+          "multi_match_rustup",
+          "filter_packages"
+        ]
+      },
+      {
+        "_index": "nixos-42-23.05-9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "_type": "_doc",
+        "_id": "VUKUAokBzICT7E5ld82K",
+        "_score": 50.479343,
+        "_source": {
+          "type": "package",
+          "package_attr_name": "rustup-toolchain-install-master",
+          "package_attr_set": "No package set",
+          "package_pname": "rustup-toolchain-install-master",
+          "package_pversion": "1.7.3",
+          "package_platforms": [
+            "i686-darwin",
+            "s390x-linux",
+            "x86_64-openbsd",
+            "i686-openbsd",
+            "x86_64-freebsd13",
+            "i686-linux",
+            "x86_64-redox",
+            "armv7a-linux",
+            "x86_64-solaris",
+            "wasm32-wasi",
+            "x86_64-netbsd",
+            "x86_64-linux",
+            "i686-windows",
+            "armv7a-darwin",
+            "riscv64-linux",
+            "powerpc64-linux",
+            "x86_64-windows",
+            "aarch64-darwin",
+            "powerpc64le-linux",
+            "armv6l-netbsd",
+            "x86_64-darwin",
+            "i686-netbsd",
+            "powerpc-netbsd",
+            "armv7l-netbsd",
+            "armv6l-linux",
+            "m68k-linux",
+            "mips64el-linux",
+            "riscv32-linux",
+            "armv7l-linux",
+            "mipsel-linux",
+            "aarch64-netbsd",
+            "i686-freebsd13",
+            "aarch64-linux",
+            "armv5tel-linux"
+          ],
+          "package_outputs": [
+            "out"
+          ],
+          "package_default_output": "out",
+          "package_programs": [
+            "rustup-toolchain-install-master"
+          ],
+          "package_license": [
+            {
+              "url": "https://spdx.org/licenses/MIT.html",
+              "fullName": "MIT License"
+            }
+          ],
+          "package_license_set": [
+            "MIT License"
+          ],
+          "package_maintainers": [
+            {
+              "name": "David Wood",
+              "github": "davidtwco",
+              "email": "david@davidtw.co"
+            }
+          ],
+          "package_maintainers_set": [
+            "David Wood"
+          ],
+          "package_description": "Install a rustc master toolchain usable from rustup",
+          "package_longDescription": null,
+          "package_hydra": null,
+          "package_system": "x86_64-linux",
+          "package_homepage": [
+            "https://github.com/kennytm/rustup-toolchain-install-master"
+          ],
+          "package_position": "pkgs/development/tools/rust/rustup-toolchain-install-master/default.nix:60"
+        },
+        "sort": [
+          50.479343,
+          "rustup-toolchain-install-master",
+          "1.7.3"
+        ],
+        "matched_queries": [
+          "multi_match_rustup",
+          "filter_packages"
+        ]
+      },
+      {
+        "_index": "nixos-42-23.05-9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "_type": "_doc",
+        "_id": "QkKUAokBzICT7E5lLz8k",
+        "_score": 11.300903,
+        "_source": {
+          "type": "package",
+          "package_attr_name": "panamax",
+          "package_attr_set": "No package set",
+          "package_pname": "panamax",
+          "package_pversion": "1.0.12",
+          "package_platforms": [
+            "i686-linux",
+            "armv7l-netbsd",
+            "i686-openbsd",
+            "powerpc64-linux",
+            "armv5tel-linux",
+            "i686-windows",
+            "powerpc64le-linux",
+            "x86_64-solaris",
+            "armv6l-netbsd",
+            "wasm32-wasi",
+            "armv7a-linux",
+            "i686-darwin",
+            "x86_64-redox",
+            "m68k-linux",
+            "mips64el-linux",
+            "aarch64-netbsd",
+            "x86_64-darwin",
+            "x86_64-linux",
+            "s390x-linux",
+            "x86_64-freebsd13",
+            "riscv32-linux",
+            "i686-netbsd",
+            "armv6l-linux",
+            "armv7a-darwin",
+            "aarch64-darwin",
+            "mipsel-linux",
+            "powerpc-netbsd",
+            "x86_64-openbsd",
+            "x86_64-netbsd",
+            "x86_64-windows",
+            "riscv64-linux",
+            "i686-freebsd13",
+            "aarch64-linux",
+            "armv7l-linux"
+          ],
+          "package_outputs": [
+            "out"
+          ],
+          "package_default_output": "out",
+          "package_programs": [
+            "panamax"
+          ],
+          "package_license": [
+            {
+              "url": "https://spdx.org/licenses/MIT.html",
+              "fullName": "MIT License"
+            },
+            {
+              "url": "https://spdx.org/licenses/Apache-2.0.html",
+              "fullName": "Apache License 2.0"
+            }
+          ],
+          "package_license_set": [
+            "MIT License",
+            "Apache License 2.0"
+          ],
+          "package_maintainers": [
+            {
+              "name": "figsoda",
+              "github": "figsoda",
+              "email": "figsoda@pm.me"
+            }
+          ],
+          "package_maintainers_set": [
+            "figsoda"
+          ],
+          "package_description": "Mirror rustup and crates.io repositories for offline Rust and cargo usage",
+          "package_longDescription": null,
+          "package_hydra": null,
+          "package_system": "x86_64-linux",
+          "package_homepage": [
+            "https://github.com/panamax-rs/panamax"
+          ],
+          "package_position": "pkgs/development/tools/rust/panamax/default.nix:34"
+        },
+        "sort": [
+          11.300903,
+          "panamax",
+          "1.0.12"
+        ],
+        "matched_queries": [
+          "multi_match_rustup",
+          "filter_packages"
+        ]
+      },
+      {
+        "_index": "nixos-42-23.05-9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "_type": "_doc",
+        "_id": "EEKUAokBzICT7E5lL0ws",
+        "_score": 8.068062,
+        "_source": {
+          "type": "package",
+          "package_attr_name": "cargo-llvm-cov",
+          "package_attr_set": "No package set",
+          "package_pname": "cargo-llvm-cov",
+          "package_pversion": "0.5.19",
+          "package_platforms": [
+            "i686-freebsd13",
+            "aarch64-darwin",
+            "m68k-linux",
+            "x86_64-solaris",
+            "powerpc64le-linux",
+            "x86_64-darwin",
+            "i686-openbsd",
+            "x86_64-openbsd",
+            "armv7a-darwin",
+            "armv7a-linux",
+            "armv7l-netbsd",
+            "armv6l-netbsd",
+            "riscv32-linux",
+            "armv6l-linux",
+            "mipsel-linux",
+            "i686-netbsd",
+            "x86_64-freebsd13",
+            "i686-darwin",
+            "x86_64-netbsd",
+            "powerpc-netbsd",
+            "wasm32-wasi",
+            "mips64el-linux",
+            "s390x-linux",
+            "i686-windows",
+            "x86_64-redox",
+            "armv5tel-linux",
+            "x86_64-linux",
+            "x86_64-windows",
+            "i686-linux",
+            "powerpc64-linux",
+            "riscv64-linux",
+            "armv7l-linux",
+            "aarch64-linux",
+            "aarch64-netbsd"
+          ],
+          "package_outputs": [
+            "out"
+          ],
+          "package_default_output": "out",
+          "package_programs": [
+            "cargo-llvm-cov"
+          ],
+          "package_license": [
+            {
+              "url": "https://spdx.org/licenses/Apache-2.0.html",
+              "fullName": "Apache License 2.0"
+            },
+            {
+              "url": "https://spdx.org/licenses/MIT.html",
+              "fullName": "MIT License"
+            }
+          ],
+          "package_license_set": [
+            "Apache License 2.0",
+            "MIT License"
+          ],
+          "package_maintainers": [
+            {
+              "name": "Wucke",
+              "github": "wucke13",
+              "email": "wucke13@gmail.com"
+            }
+          ],
+          "package_maintainers_set": [
+            "Wucke"
+          ],
+          "package_description": "Cargo subcommand to easily use LLVM source-based code coverage",
+          "package_longDescription": "<rendered-html><p>In order for this to work, you either need to run\n<code>rustup component add llvm- tools-preview</code> or install the\n<code>llvm-tools-preview</code> component using your Nix library (e.g.\nfenix or rust-overlay)</p>\n</rendered-html>",
+          "package_hydra": null,
+          "package_system": "x86_64-linux",
+          "package_homepage": [
+            "https://github.com/taiki-e/cargo-llvm-cov"
+          ],
+          "package_position": "pkgs/development/tools/rust/cargo-llvm-cov/default.nix:35"
+        },
+        "sort": [
+          8.068062,
+          "cargo-llvm-cov",
+          "0.5.19"
+        ],
+        "matched_queries": [
+          "multi_match_rustup",
+          "filter_packages"
+        ]
+      },
+      {
+        "_index": "nixos-42-23.05-9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "_type": "_doc",
+        "_id": "BEKUAokBzICT7E5lX6tP",
+        "_score": 8.068062,
+        "_source": {
+          "type": "package",
+          "package_attr_name": "cargo-binutils",
+          "package_attr_set": "No package set",
+          "package_pname": "cargo-binutils",
+          "package_pversion": "0.3.6",
+          "package_platforms": [
+            "x86_64-windows",
+            "x86_64-linux",
+            "x86_64-solaris",
+            "armv5tel-linux",
+            "i686-openbsd",
+            "powerpc64le-linux",
+            "powerpc-netbsd",
+            "armv7a-darwin",
+            "riscv32-linux",
+            "x86_64-netbsd",
+            "armv6l-netbsd",
+            "i686-windows",
+            "i686-freebsd13",
+            "x86_64-darwin",
+            "armv6l-linux",
+            "i686-darwin",
+            "aarch64-linux",
+            "i686-linux",
+            "armv7a-linux",
+            "i686-netbsd",
+            "armv7l-netbsd",
+            "aarch64-darwin",
+            "m68k-linux",
+            "x86_64-redox",
+            "mipsel-linux",
+            "mips64el-linux",
+            "armv7l-linux",
+            "aarch64-netbsd",
+            "wasm32-wasi",
+            "s390x-linux",
+            "powerpc64-linux",
+            "x86_64-openbsd",
+            "riscv64-linux",
+            "x86_64-freebsd13"
+          ],
+          "package_outputs": [
+            "out"
+          ],
+          "package_default_output": "out",
+          "package_programs": [
+            "rust-readobj",
+            "rust-cov",
+            "cargo-profdata",
+            "rust-ar",
+            "cargo-objcopy",
+            "rust-profdata",
+            "cargo-size",
+            "rust-objcopy",
+            "cargo-cov",
+            "cargo-objdump",
+            "rust-strip",
+            "rust-objdump",
+            "rust-lld",
+            "rust-ld",
+            "rust-nm",
+            "cargo-readobj",
+            "rust-size",
+            "cargo-strip",
+            "cargo-nm"
+          ],
+          "package_license": [
+            {
+              "url": "https://spdx.org/licenses/Apache-2.0.html",
+              "fullName": "Apache License 2.0"
+            },
+            {
+              "url": "https://spdx.org/licenses/MIT.html",
+              "fullName": "MIT License"
+            }
+          ],
+          "package_license_set": [
+            "Apache License 2.0",
+            "MIT License"
+          ],
+          "package_maintainers": [
+            {
+              "name": "Justus K",
+              "github": "Stupremee",
+              "email": "jutus.k@protonmail.com"
+            }
+          ],
+          "package_maintainers_set": [
+            "Justus K"
+          ],
+          "package_description": "Cargo subcommands to invoke the LLVM tools shipped with the Rust toolchain",
+          "package_longDescription": "<rendered-html><p>In order for this to work, you either need to run\n<code>rustup component add llvm-tools-preview</code> or install the\n<code>llvm-tools-preview</code> component using your Nix library (e.g.\nfenix or rust-overlay)</p>\n</rendered-html>",
+          "package_hydra": null,
+          "package_system": "x86_64-linux",
+          "package_homepage": [
+            "https://github.com/rust-embedded/cargo-binutils"
+          ],
+          "package_position": "pkgs/development/tools/rust/cargo-binutils/default.nix:15"
+        },
+        "sort": [
+          8.068062,
+          "cargo-binutils",
+          "0.3.6"
+        ],
+        "matched_queries": [
+          "multi_match_rustup",
+          "filter_packages"
+        ]
+      }
+    ]
+  },
+  "aggregations": {
+    "all": {
+      "doc_count": 116655,
+      "package_attr_set": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 6065,
+        "buckets": [
+          {
+            "key": "rPackages",
+            "doc_count": 25224
+          },
+          {
+            "key": "haskellPackages",
+            "doc_count": 17477
+          },
+          {
+            "key": "No package set",
+            "doc_count": 16276
+          },
+          {
+            "key": "python310Packages",
+            "doc_count": 6326
+          },
+          {
+            "key": "python311Packages",
+            "doc_count": 6323
+          },
+          {
+            "key": "emacsPackages",
+            "doc_count": 5835
+          },
+          {
+            "key": "sbclPackages",
+            "doc_count": 4525
+          },
+          {
+            "key": "linuxKernel",
+            "doc_count": 2763
+          },
+          {
+            "key": "perl534Packages",
+            "doc_count": 1828
+          },
+          {
+            "key": "perl536Packages",
+            "doc_count": 1823
+          },
+          {
+            "key": "vimPlugins",
+            "doc_count": 1512
+          },
+          {
+            "key": "ocamlPackages",
+            "doc_count": 873
+          },
+          {
+            "key": "home-assistant-component-tests",
+            "doc_count": 734
+          },
+          {
+            "key": "gnomeExtensions",
+            "doc_count": 733
+          },
+          {
+            "key": "chickenPackages_5",
+            "doc_count": 554
+          },
+          {
+            "key": "libsForQt5",
+            "doc_count": 483
+          },
+          {
+            "key": "lispPackages",
+            "doc_count": 391
+          },
+          {
+            "key": "quicklispPackagesClisp",
+            "doc_count": 383
+          },
+          {
+            "key": "nodePackages_latest",
+            "doc_count": 375
+          },
+          {
+            "key": "nodePackages",
+            "doc_count": 358
+          }
+        ]
+      },
+      "package_maintainers_set": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 35535,
+        "buckets": [
+          {
+            "key": "Michael Raskin",
+            "doc_count": 5060
+          },
+          {
+            "key": "Luke Gorrie",
+            "doc_count": 4544
+          },
+          {
+            "key": "Daniel Nagy",
+            "doc_count": 4543
+          },
+          {
+            "key": "Kasper Gałkowski",
+            "doc_count": 4541
+          },
+          {
+            "key": "Hraban Luyat",
+            "doc_count": 4539
+          },
+          {
+            "key": "Fabian Affolter",
+            "doc_count": 3335
+          },
+          {
+            "key": "Robin Gloster",
+            "doc_count": 1322
+          },
+          {
+            "key": "Martin Weinelt",
+            "doc_count": 1259
+          },
+          {
+            "key": "Jörg Thalheim",
+            "doc_count": 1037
+          },
+          {
+            "key": "Sandro Jäckel",
+            "doc_count": 723
+          },
+          {
+            "key": "piegames",
+            "doc_count": 722
+          },
+          {
+            "key": "Robert Schütz",
+            "doc_count": 665
+          },
+          {
+            "key": "Aaron Andersen",
+            "doc_count": 525
+          },
+          {
+            "key": "Lukas Epple",
+            "doc_count": 518
+          },
+          {
+            "key": "Bobby Rong",
+            "doc_count": 509
+          },
+          {
+            "key": "Chris Ostrouchov",
+            "doc_count": 496
+          },
+          {
+            "key": "Maximilian Bosch",
+            "doc_count": 467
+          },
+          {
+            "key": "Mario Rodas",
+            "doc_count": 456
+          },
+          {
+            "key": "Jonathan Ringer",
+            "doc_count": 422
+          },
+          {
+            "key": "Anderson Torres",
+            "doc_count": 400
+          }
+        ]
+      },
+      "package_platforms": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 3168621,
+        "buckets": [
+          {
+            "key": "x86_64-linux",
+            "doc_count": 92112
+          },
+          {
+            "key": "i686-linux",
+            "doc_count": 90541
+          },
+          {
+            "key": "aarch64-linux",
+            "doc_count": 90233
+          },
+          {
+            "key": "armv7l-linux",
+            "doc_count": 89772
+          },
+          {
+            "key": "armv6l-linux",
+            "doc_count": 89672
+          },
+          {
+            "key": "powerpc64le-linux",
+            "doc_count": 89654
+          },
+          {
+            "key": "armv5tel-linux",
+            "doc_count": 89596
+          },
+          {
+            "key": "armv7a-linux",
+            "doc_count": 89595
+          },
+          {
+            "key": "powerpc64-linux",
+            "doc_count": 89581
+          },
+          {
+            "key": "riscv64-linux",
+            "doc_count": 89557
+          },
+          {
+            "key": "mipsel-linux",
+            "doc_count": 89544
+          },
+          {
+            "key": "mips64el-linux",
+            "doc_count": 89540
+          },
+          {
+            "key": "s390x-linux",
+            "doc_count": 89536
+          },
+          {
+            "key": "riscv32-linux",
+            "doc_count": 89497
+          },
+          {
+            "key": "m68k-linux",
+            "doc_count": 89352
+          },
+          {
+            "key": "loongarch64-linux",
+            "doc_count": 88440
+          },
+          {
+            "key": "microblazeel-linux",
+            "doc_count": 88436
+          },
+          {
+            "key": "microblaze-linux",
+            "doc_count": 88434
+          },
+          {
+            "key": "s390-linux",
+            "doc_count": 88433
+          },
+          {
+            "key": "x86_64-darwin",
+            "doc_count": 82307
+          }
+        ]
+      },
+      "package_license_set": {
+        "doc_count_error_upper_bound": 0,
+        "sum_other_doc_count": 8499,
+        "buckets": [
+          {
+            "key": "MIT License",
+            "doc_count": 13941
+          },
+          {
+            "key": "BSD 3-clause \"New\" or \"Revised\" License",
+            "doc_count": 13281
+          },
+          {
+            "key": "Apache License 2.0",
+            "doc_count": 5666
+          },
+          {
+            "key": "GNU General Public License v2.0 or later",
+            "doc_count": 3427
+          },
+          {
+            "key": "Artistic License 1.0",
+            "doc_count": 3071
+          },
+          {
+            "key": "GNU General Public License v1.0 or later",
+            "doc_count": 3011
+          },
+          {
+            "key": "GNU General Public License v2.0",
+            "doc_count": 2489
+          },
+          {
+            "key": "GNU General Public License v3.0 or later",
+            "doc_count": 2248
+          },
+          {
+            "key": "GNU General Public License v2.0 only",
+            "doc_count": 1642
+          },
+          {
+            "key": "GNU General Public License v3.0 only",
+            "doc_count": 1596
+          },
+          {
+            "key": "BSD 2-clause \"Simplified\" License",
+            "doc_count": 1476
+          },
+          {
+            "key": "GNU General Public License v3.0",
+            "doc_count": 1156
+          },
+          {
+            "key": "GNU Lesser General Public License v2.1 or later",
+            "doc_count": 850
+          },
+          {
+            "key": "MIT",
+            "doc_count": 787
+          },
+          {
+            "key": "Mozilla Public License 2.0",
+            "doc_count": 785
+          },
+          {
+            "key": "Unfree",
+            "doc_count": 744
+          },
+          {
+            "key": "ISC License",
+            "doc_count": 620
+          },
+          {
+            "key": "Public Domain",
+            "doc_count": 591
+          },
+          {
+            "key": "GNU Lesser General Public License v3.0 or later",
+            "doc_count": 567
+          },
+          {
+            "key": "unknown",
+            "doc_count": 537
+          }
+        ]
+      }
+    },
+    "package_attr_set": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "No package set",
+          "doc_count": 5
+        }
+      ]
+    },
+    "package_maintainers_set": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "David Wood",
+          "doc_count": 1
+        },
+        {
+          "key": "Justus K",
+          "doc_count": 1
+        },
+        {
+          "key": "Jörg Thalheim",
+          "doc_count": 1
+        },
+        {
+          "key": "Wucke",
+          "doc_count": 1
+        },
+        {
+          "key": "figsoda",
+          "doc_count": 1
+        }
+      ]
+    },
+    "package_platforms": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 70,
+      "buckets": [
+        {
+          "key": "aarch64-darwin",
+          "doc_count": 5
+        },
+        {
+          "key": "aarch64-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "aarch64-netbsd",
+          "doc_count": 5
+        },
+        {
+          "key": "armv5tel-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "armv6l-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "armv6l-netbsd",
+          "doc_count": 5
+        },
+        {
+          "key": "armv7a-darwin",
+          "doc_count": 5
+        },
+        {
+          "key": "armv7a-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "armv7l-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "armv7l-netbsd",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-darwin",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-freebsd13",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-netbsd",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-openbsd",
+          "doc_count": 5
+        },
+        {
+          "key": "i686-windows",
+          "doc_count": 5
+        },
+        {
+          "key": "m68k-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "mips64el-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "mipsel-linux",
+          "doc_count": 5
+        },
+        {
+          "key": "powerpc-netbsd",
+          "doc_count": 5
+        }
+      ]
+    },
+    "package_license_set": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "MIT License",
+          "doc_count": 5
+        },
+        {
+          "key": "Apache License 2.0",
+          "doc_count": 4
+        }
+      ]
+    }
+  }
+}
