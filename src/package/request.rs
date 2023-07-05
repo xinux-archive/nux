@@ -1,5 +1,7 @@
+use std::io::ErrorKind;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use crate::package::error::NuxError;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -91,6 +93,31 @@ pub struct PackageAttrSet {
 pub struct AggsTerms {
     pub field: String,
     pub size: i64,
+}
+
+impl AggsTerms {
+    pub fn new(field: &str) -> Result<Self, NuxError> {
+        let result = match field {
+            "attr" => AggsTerms {
+                field: "package_license_set".to_string(),
+                size: 20
+            },
+            "license" => AggsTerms {
+                field: "package_license_set".to_string(),
+                size: 20
+            },
+            "maintainers" => AggsTerms {
+                field: "package_maintainers_set".to_string(),
+                size: 20
+            },
+            "platforms" => AggsTerms {
+                field: "package_platforms".to_string(),
+                size: 20
+            },
+            _ => Err(NuxError::CustomError(ErrorKind::InvalidInput))
+        };
+        Ok(result)
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
