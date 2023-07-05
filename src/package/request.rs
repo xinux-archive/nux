@@ -1,9 +1,9 @@
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use serde::{Serialize, Deserialize};
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Root {
+pub struct Request {
     pub from: i64,
     pub size: i64,
     pub sort: Vec<Sort>,
@@ -11,15 +11,59 @@ pub struct Root {
     pub query: Query,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+impl Request {
+    pub fn new(sort: &str) -> Request {
+        Request {
+            from: 0,
+            size: 50,
+            sort: vec![Sort::new(sort)],
+            aggs: Aggs::default(),
+            query: Query::default(),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Sort {
     #[serde(rename = "_score")]
-    pub score: String,
+    pub score: Option<String>,
     #[serde(rename = "package_attr_name")]
     pub package_attr_name: String,
     #[serde(rename = "package_pversion")]
     pub package_pversion: String,
+}
+
+impl Sort {
+    pub fn new(by: &str) -> Self {
+        match by {
+            "asc" | "alphabetically ascending" => Sort {
+                score: None,
+                package_attr_name: "asc".to_string(),
+                package_pversion: "asc".to_string(),
+            },
+            "desc" | "alphabetically descending" => Sort {
+                score: None,
+                package_attr_name: "desc".to_string(),
+                package_pversion: "desc".to_string(),
+            },
+            _ => Sort {
+                score: Some("desc".to_string()),
+                package_attr_name: "desc".to_string(),
+                package_pversion: "desc".to_string(),
+            }
+        }
+    }
+}
+
+impl Default for Sort {
+    fn default() -> Self {
+        Sort {
+            score: Some("desc".to_string()),
+            package_attr_name: "desc".to_string(),
+            package_pversion: "desc".to_string(),
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -39,12 +83,12 @@ pub struct Aggs {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageAttrSet {
-    pub terms: Terms,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Terms {
+pub struct AggsTerms {
     pub field: String,
     pub size: i64,
 }
@@ -52,40 +96,19 @@ pub struct Terms {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageLicenseSet {
-    pub terms: Terms2,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms2 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageMaintainersSet {
-    pub terms: Terms3,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms3 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackagePlatforms {
-    pub terms: Terms4,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms4 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -97,8 +120,7 @@ pub struct All {
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Global {
-}
+pub struct Global {}
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -116,53 +138,25 @@ pub struct Aggregations {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageAttrSet2 {
-    pub terms: Terms5,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms5 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageLicenseSet2 {
-    pub terms: Terms6,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms6 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageMaintainersSet2 {
-    pub terms: Terms7,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms7 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackagePlatforms2 {
-    pub terms: Terms8,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Terms8 {
-    pub field: String,
-    pub size: i64,
+    pub terms: AggsTerms,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
