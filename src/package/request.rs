@@ -222,11 +222,19 @@ pub struct Type {
 }
 
 impl Type {
-    pub fn new() -> Type {
-        Type {
-            value: "package".to_string(),
-            name: "filter_packages".to_string()
-        }
+    pub fn new(value: &str) -> Result<Type, NuxError> {
+        let result = match value {
+            "package" => Type {
+                value: "package".to_string(),
+                name: "filter_packages".to_string()
+            },
+            "option" => Type {
+                value: "option".to_string(),
+                name: "filter_packages".to_string()
+            },
+            _ => Err(NuxError::CustomError(ErrorKind::InvalidInput))
+        };
+        Ok(result)
     }
 }
 
