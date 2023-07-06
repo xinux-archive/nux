@@ -335,3 +335,12 @@ pub struct PackageAttrName {
     #[serde(rename = "case_insensitive")]
     pub case_insensitive: bool,
 }
+
+impl PackageAttrName {
+    pub fn new(name: &str) -> PackageAttrName {
+        PackageAttrName {
+            value: "*" + String::from(name) + "*",
+            case_insensitive: true
+        }
+    }
+}
