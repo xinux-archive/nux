@@ -99,7 +99,7 @@ impl AggsTerms {
     pub fn new(field: &str) -> Result<Self, NuxError> {
         let result = match field {
             "attr" => AggsTerms {
-                field: "package_license_set".to_string(),
+                field: "package_attr_set".to_string(),
                 size: 20
             },
             "license" => AggsTerms {
@@ -219,6 +219,15 @@ pub struct Type {
     pub value: String,
     #[serde(rename = "_name")]
     pub name: String,
+}
+
+impl Type {
+    pub fn new() -> Type {
+        Type {
+            value: "package".to_string(),
+            name: "filter_packages".to_string()
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
