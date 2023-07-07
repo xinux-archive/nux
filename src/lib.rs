@@ -8,7 +8,7 @@ pub fn add(left: usize, right: usize) -> usize {
 mod tests {
     use std::io::ErrorKind;
     use crate::package::error::NuxError;
-    use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms, Type, MultiMatch};
+    use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms, Type, MultiMatch, PackageAttrName};
 
     #[test]
     fn is_request_json_ok() {
@@ -103,6 +103,18 @@ mod tests {
         };
 
         let expected = MultiMatch::new("slave");
+
+        assert_eq!(result, expected);
+    }
+
+    #[test]
+    fn is_package_name_ok(){
+        let result = PackageAttrName{
+            value: "*slave*".to_string(),
+            case_insensitive: true
+        };
+
+        let expected = PackageAttrName::new("slave");
 
         assert_eq!(result, expected);
     }
