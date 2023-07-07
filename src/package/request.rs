@@ -110,7 +110,7 @@ impl AggsTerms {
                 field: "package_platforms".to_string(),
                 size: 20
             },
-            _ => return Err(NuxError::CustomError(ErrorKind::InvalidInput))
+            _ => return Err(NuxError::SpecificError(String::from("this is an invalid input:(")))
         };
         Ok(result)
     }
@@ -228,7 +228,7 @@ impl Type {
                 value: "option".to_string(),
                 name: "filter_packages".to_string()
             },
-            _ => return Err(NuxError::CustomError(ErrorKind::InvalidInput))
+            _ => return Err(NuxError::SpecificError(String::from("this is an invalid input:(")))
         };
         Ok(result)
     }

@@ -1,12 +1,8 @@
 mod package;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
-    use std::io::ErrorKind;
+
     use crate::package::error::NuxError;
     use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms, Type, MultiMatch, PackageAttrName};
 
@@ -52,25 +48,28 @@ mod tests {
             size: 20
         });
 
-        let error = Err(NuxError::CustomError(ErrorKind::InvalidInput));
-
         let expected_result = AggsTerms::new("attr");
-        let expected_error = AggsTerms::new("slave");
-
         assert_eq!(result, expected_result);
+    }
+
+    #[test]
+    fn are_terms_errors_ok() {
+        let error = Err(NuxError::SpecificError(String::from("this is an invalid input:(")));
+
+        let expected_error = AggsTerms::new("slave");
         assert_eq!(error, expected_error);
     }
 
     #[test]
     fn is_type_ok() {
         let result = Ok(Type{
-            value: "option".to_string(),
+            value: "package".to_string(),
             name: "filter_packages".to_string()
         });
 
-        let error = Err(NuxError::CustomError(ErrorKind::InvalidInput));
+        let error = Err(NuxError::SpecificError(String::from("this is an invalid input:(")));
 
-        let expected_result = Type::new("option");
+        let expected_result = Type::new("package");
         let expected_error = Type::new("slave");
 
         assert_eq!(result, expected_result);
