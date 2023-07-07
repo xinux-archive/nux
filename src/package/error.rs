@@ -2,7 +2,7 @@ use std::fmt::{Display, Formatter};
 use std::io::{Error as IoError, ErrorKind};
 
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum NuxError {
     CustomError(ErrorKind),
     SpecificError(String)

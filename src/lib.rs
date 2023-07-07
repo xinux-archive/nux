@@ -6,7 +6,9 @@ pub fn add(left: usize, right: usize) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use crate::package::request::{Request, Sort, Aggs, Query};
+    use std::io::ErrorKind;
+    use crate::package::error::NuxError;
+    use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms};
 
     #[test]
     fn is_request_json_ok() {
@@ -44,5 +46,18 @@ mod tests {
     }
 
     #[test]
+    fn are_terms_ok() {
+        let result = Ok(AggsTerms {
+            field: "package_attr_set".to_string(),
+            size: 20
+        });
 
+        let error = Err(NuxError::CustomError(ErrorKind::InvalidInput));
+
+        let expected_result = AggsTerms::new("attr");
+        let expected_error = AggsTerms::new("slave");
+
+        assert_eq!(result, expected_result);
+        assert_eq!(error, expected_error);
+    }
 }
