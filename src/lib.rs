@@ -8,7 +8,7 @@ pub fn add(left: usize, right: usize) -> usize {
 mod tests {
     use std::io::ErrorKind;
     use crate::package::error::NuxError;
-    use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms, Type};
+    use crate::package::request::{Request, Sort, Aggs, Query, AggsTerms, Type, MultiMatch};
 
     #[test]
     fn is_request_json_ok() {
@@ -75,5 +75,35 @@ mod tests {
 
         assert_eq!(result, expected_result);
         assert_eq!(error, expected_error);
+    }
+
+    #[test]
+    fn is_multi_match_ok() {
+        let result = MultiMatch {
+            type_field: "cross_fields".to_string(),
+            query: "slave".to_string(),
+            analyzer: "whitespace".to_string(),
+            auto_generate_synonyms_phrase_query: false,
+            operator: "and".to_string(),
+            name: "multi_match_slave".to_string(),
+            fields: vec![
+                "package_attr_name^9".to_string(),
+                "package_attr_name.*^5.3999999999999995".to_string(),
+                "package_programs^9".to_string(),
+                "package_programs.*^5.3999999999999995".to_string(),
+                "package_pname^6".to_string(),
+                "package_pname.*^3.5999999999999996".to_string(),
+                "package_description^1.3".to_string(),
+                "package_description.*^0.78".to_string(),
+                "package_longDescription^1".to_string(),
+                "package_longDescription.*^0.6".to_string(),
+                "flake_name^0.5".to_string(),
+                "flake_name.*^0.3".to_string()
+            ]
+        };
+
+        let expected = MultiMatch::new("slave");
+
+        assert_eq!(result, expected);
     }
 }
