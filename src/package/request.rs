@@ -96,7 +96,7 @@ pub struct AggsTerms {
 }
 
 impl AggsTerms {
-    pub fn new(field: &str) -> Result<Self, NuxError> {
+    pub fn new(field: &str) -> Result<AggsTerms, NuxError> {
         let result = match field {
             "attr" => AggsTerms {
                 field: "package_attr_set".to_string(),
@@ -114,7 +114,7 @@ impl AggsTerms {
                 field: "package_platforms".to_string(),
                 size: 20
             },
-            _ => Err(NuxError::CustomError(ErrorKind::InvalidInput))
+            _ => return Err(NuxError::CustomError(ErrorKind::InvalidInput))
         };
         Ok(result)
     }
@@ -232,7 +232,7 @@ impl Type {
                 value: "option".to_string(),
                 name: "filter_packages".to_string()
             },
-            _ => Err(NuxError::CustomError(ErrorKind::InvalidInput))
+            _ => return Err(NuxError::CustomError(ErrorKind::InvalidInput))
         };
         Ok(result)
     }
