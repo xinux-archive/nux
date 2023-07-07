@@ -49,11 +49,7 @@ impl Sort {
                 package_attr_name: "desc".to_string(),
                 package_pversion: "desc".to_string(),
             },
-            _ => Sort {
-                score: Some("desc".to_string()),
-                package_attr_name: "desc".to_string(),
-                package_pversion: "desc".to_string(),
-            }
+            _ => Sort::default()
         }
     }
 }
