@@ -302,7 +302,7 @@ impl MultiMatch {
             analyzer: "whitespace".to_string(),
             auto_generate_synonyms_phrase_query: false,
             operator: "and".to_string(),
-            name: "multi_match_" + String::from(name),
+            name: "multi_match_".to_owned() + &String::from(name),
             fields: vec![
                 "package_attr_name^9".to_string(),
                 "package_attr_name.*^5.3999999999999995".to_string(),
@@ -339,7 +339,7 @@ pub struct PackageAttrName {
 impl PackageAttrName {
     pub fn new(name: &str) -> PackageAttrName {
         PackageAttrName {
-            value: "*" + String::from(name) + "*",
+            value: "*".to_owned() + &String::from(name) + "*",
             case_insensitive: true
         }
     }
