@@ -14,12 +14,12 @@ pub struct Request {
 }
 
 impl Request {
-    pub fn new(sort: &str) -> Request {
+    pub fn new(sort: &str, aggs: &str) -> Request {
         Request {
             from: 0,
             size: 50,
             sort: vec![Sort::new(sort)],
-            aggs: Aggs::default(),
+            aggs: Aggs::new(aggs),
             query: Query::default(),
         }
     }
@@ -78,10 +78,72 @@ pub struct Aggs {
     pub all: All,
 }
 
+impl Aggs {
+    pub fn new(aggs: &str) -> Aggs {
+        Aggs {
+            package_attr_set: PackageAttrSet::new(aggs),
+            package_license_set: PackageLicenseSet::new(aggs),
+            package_maintainers_set: PackageMaintainersSet::new(aggs),
+            package_platforms: PackagePlatforms::new(aggs),
+            all: All::new(aggs)
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageAttrSet {
     pub terms: AggsTerms,
+}
+
+impl PackageAttrSet {
+    pub fn new(attr: &str) -> PackageAttrSet {
+        PackageAttrSet {
+            terms: AggsTerms::new(attr).unwrap()
+        }
+    }
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PackageLicenseSet {
+    pub terms: AggsTerms,
+}
+
+impl PackageLicenseSet {
+    pub fn new(license: &str) -> PackageLicenseSet {
+        PackageLicenseSet {
+            terms: AggsTerms::new(license).unwrap()
+        }
+    }
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PackageMaintainersSet {
+    pub terms: AggsTerms,
+}
+
+impl PackageMaintainersSet {
+    pub fn new(maintainers: &str) -> PackageMaintainersSet {
+        PackageMaintainersSet {
+            terms: AggsTerms::new(maintainers).unwrap()
+        }
+    }
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PackagePlatforms {
+    pub terms: AggsTerms,
+}
+
+impl PackagePlatforms {
+    pub fn new(platforms: &str) -> PackagePlatforms {
+        PackagePlatforms {
+            terms: AggsTerms::new(platforms).unwrap()
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -118,27 +180,18 @@ impl AggsTerms {
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct PackageLicenseSet {
-    pub terms: AggsTerms,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct PackageMaintainersSet {
-    pub terms: AggsTerms,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct PackagePlatforms {
-    pub terms: AggsTerms,
-}
-
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct All {
     pub global: Global,
     pub aggregations: Aggregations,
+}
+
+impl All {
+    pub fn new(all: &str) -> All {
+        All {
+            global: Global::default(),
+            aggregations: Aggregations::new(all)
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -158,10 +211,29 @@ pub struct Aggregations {
     pub package_platforms: PackagePlatforms2,
 }
 
+impl Aggregations {
+    pub fn new(aggregations: &str) -> Aggregations {
+        Aggregations {
+            package_attr_set: PackageAttrSet2::new(aggregations),
+            package_license_set: PackageLicenseSet2::new(aggregations),
+            package_maintainers_set: PackageMaintainersSet2::new(aggregations),
+            package_platforms: PackagePlatforms2::new(aggregations)
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageAttrSet2 {
     pub terms: AggsTerms,
+}
+
+impl PackageAttrSet2 {
+    pub fn new(attr: &str) -> PackageAttrSet2 {
+        PackageAttrSet2 {
+            terms: AggsTerms::new(attr).unwrap()
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -170,16 +242,40 @@ pub struct PackageLicenseSet2 {
     pub terms: AggsTerms,
 }
 
+impl PackageLicenseSet2 {
+    pub fn new(license: &str) -> PackageLicenseSet2 {
+        PackageLicenseSet2 {
+            terms: AggsTerms::new(license).unwrap()
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackageMaintainersSet2 {
     pub terms: AggsTerms,
 }
 
+impl PackageMaintainersSet2 {
+    pub fn new(maintainers: &str) -> PackageMaintainersSet2 {
+        PackageMaintainersSet2 {
+            terms: AggsTerms::new(maintainers).unwrap()
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PackagePlatforms2 {
     pub terms: AggsTerms,
+}
+
+impl PackagePlatforms2 {
+    pub fn new(platforms: &str) -> PackagePlatforms2 {
+        PackagePlatforms2 {
+            terms: AggsTerms::new(platforms).unwrap()
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
