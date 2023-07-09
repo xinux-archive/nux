@@ -1,4 +1,3 @@
-use std::io::ErrorKind;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use crate::package::error::NuxError;
@@ -14,13 +13,13 @@ pub struct Request {
 }
 
 impl Request {
-    pub fn new(sort: &str, aggs: &str) -> Request {
+    pub fn new(sort: &str, aggs: &str, query: &str) -> Request {
         Request {
             from: 0,
             size: 50,
             sort: vec![Sort::new(sort)],
             aggs: Aggs::new(aggs),
-            query: Query::default(),
+            query: Query::new(query),
         }
     }
 }
@@ -284,11 +283,28 @@ pub struct Query {
     pub bool: Bool,
 }
 
+impl Query {
+    pub fn new(query: &str) -> Query {
+        Query {
+            bool: Bool::new(query)
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Bool {
     pub filter: Vec<Filter>,
     pub must: Vec<Must2>,
+}
+
+impl Bool {
+    pub fn new(bool: &str) -> Bool {
+        Bool {
+            filter: vec![Filter::new(bool)],
+            must: vec![Must2::new(bool)]
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -298,11 +314,28 @@ pub struct Filter {
     pub bool: Option<Bool2>,
 }
 
+impl Filter {
+    pub fn new(filter: &str) -> Filter {
+        Filter {
+            term: Some(Term::new(filter)),
+            bool: Some(Bool2::default())
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Term {
     #[serde(rename = "type")]
     pub type_field: Type,
+}
+
+impl Term {
+    pub fn new(term: &str) -> Term {
+        Term {
+            type_field: Type::new(term).unwrap()
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -355,6 +388,14 @@ pub struct Must2 {
     pub dis_max: DisMax,
 }
 
+impl Must2 {
+    pub fn new(must: &str) -> Must2 {
+        Must2 {
+            dis_max: DisMax::new(must)
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct DisMax {
@@ -363,12 +404,30 @@ pub struct DisMax {
     pub queries: Vec<Query2>,
 }
 
+impl DisMax {
+    pub fn new(dismax: &str) -> DisMax {
+        DisMax {
+            tie_breaker: 0.7,
+            queries: vec![Query2::new(dismax)]
+        }
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Query2 {
     #[serde(rename = "multi_match")]
     pub multi_match: Option<MultiMatch>,
     pub wildcard: Option<Wildcard>,
+}
+
+impl Query2 {
+    pub fn new(query: &str) -> Query2 {
+        Query2 {
+            multi_match: Some(MultiMatch::new(query)),
+            wildcard: Some(Wildcard::new(query))
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -418,6 +477,14 @@ impl MultiMatch {
 pub struct Wildcard {
     #[serde(rename = "package_attr_name")]
     pub package_attr_name: PackageAttrName,
+}
+
+impl Wildcard {
+    pub fn new(wildcard: &str) -> Wildcard {
+        Wildcard {
+            package_attr_name: PackageAttrName::new(wildcard)
+        }
+    }
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
