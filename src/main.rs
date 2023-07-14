@@ -8,7 +8,7 @@ use crate::package::response::Response;
 
 #[tokio::main]
 async fn main() {
-    let new_type = Request::new("asc");
+    //let new_type = Request::new("asc");
 
     let new_type: Response = Client::new()
         .post("https://search.nixos.org/packages?channel=23.05&size=50&sort=alpha_asc&type=options&query=Pack")

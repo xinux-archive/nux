@@ -13,12 +13,12 @@ pub struct Request {
 }
 
 impl Request {
-    pub fn new(sort: &str, aggs: &str, query: &str) -> Request {
+    pub fn new(sort: &str, aggs: &str, aggs_size: Option<u64>, query: &str) -> Request {
         Request {
             from: 0,
             size: 50,
             sort: vec![Sort::new(sort)],
-            aggs: Aggs::new(aggs),
+            aggs: Aggs::new(aggs, aggs_size),
             query: Query::new(query),
         }
     }
@@ -78,13 +78,13 @@ pub struct Aggs {
 }
 
 impl Aggs {
-    pub fn new(aggs: &str) -> Aggs {
+    pub fn new(aggs: &str, size: Option<u64>) -> Aggs {
         Aggs {
-            package_attr_set: PackageAttrSet::new(aggs),
-            package_license_set: PackageLicenseSet::new(aggs),
-            package_maintainers_set: PackageMaintainersSet::new(aggs),
-            package_platforms: PackagePlatforms::new(aggs),
-            all: All::new(aggs)
+            package_attr_set: PackageAttrSet::new(aggs, size),
+            package_license_set: PackageLicenseSet::new(aggs, size),
+            package_maintainers_set: PackageMaintainersSet::new(aggs, size),
+            package_platforms: PackagePlatforms::new(aggs, size),
+            all: All::new(aggs, size)
         }
     }
 }
@@ -96,9 +96,9 @@ pub struct PackageAttrSet {
 }
 
 impl PackageAttrSet {
-    pub fn new(attr: &str) -> PackageAttrSet {
+    pub fn new(attr: &str, size: Option<u64>) -> PackageAttrSet {
         PackageAttrSet {
-            terms: AggsTerms::new(attr).unwrap()
+            terms: AggsTerms::new(attr, size).unwrap()
         }
     }
 }
@@ -110,9 +110,9 @@ pub struct PackageLicenseSet {
 }
 
 impl PackageLicenseSet {
-    pub fn new(license: &str) -> PackageLicenseSet {
+    pub fn new(license: &str, size: Option<u64>) -> PackageLicenseSet {
         PackageLicenseSet {
-            terms: AggsTerms::new(license).unwrap()
+            terms: AggsTerms::new(license, size).unwrap()
         }
     }
 }
@@ -124,9 +124,9 @@ pub struct PackageMaintainersSet {
 }
 
 impl PackageMaintainersSet {
-    pub fn new(maintainers: &str) -> PackageMaintainersSet {
+    pub fn new(maintainers: &str, size: Option<u64>) -> PackageMaintainersSet {
         PackageMaintainersSet {
-            terms: AggsTerms::new(maintainers).unwrap()
+            terms: AggsTerms::new(maintainers, size).unwrap()
         }
     }
 }
@@ -138,9 +138,9 @@ pub struct PackagePlatforms {
 }
 
 impl PackagePlatforms {
-    pub fn new(platforms: &str) -> PackagePlatforms {
+    pub fn new(platforms: &str, size: Option<u64>) -> PackagePlatforms {
         PackagePlatforms {
-            terms: AggsTerms::new(platforms).unwrap()
+            terms: AggsTerms::new(platforms, size).unwrap()
         }
     }
 }
@@ -149,30 +149,32 @@ impl PackagePlatforms {
 #[serde(rename_all = "camelCase")]
 pub struct AggsTerms {
     pub field: String,
-    pub size: i64,
+    pub size: u64,
 }
 
 impl AggsTerms {
-    pub fn new(field: &str) -> Result<AggsTerms, NuxError> {
+    pub fn new(field: &str, size: Option<u64>) -> Result<AggsTerms, NuxError> {
+
         let result = match field {
             "attr" => AggsTerms {
                 field: "package_attr_set".to_string(),
-                size: 20
+                size: size.unwrap_or(20)
             },
             "license" => AggsTerms {
                 field: "package_license_set".to_string(),
-                size: 20
+                size: size.unwrap_or(20)
             },
             "maintainers" => AggsTerms {
                 field: "package_maintainers_set".to_string(),
-                size: 20
+                size: size.unwrap_or(20)
             },
             "platforms" => AggsTerms {
                 field: "package_platforms".to_string(),
-                size: 20
+                size: size.unwrap_or(20)
             },
             _ => return Err(NuxError::SpecificError(String::from("this is an invalid input:(")))
         };
+
         Ok(result)
     }
 }
@@ -185,10 +187,10 @@ pub struct All {
 }
 
 impl All {
-    pub fn new(all: &str) -> All {
+    pub fn new(all: &str, size: Option<u64>) -> All {
         All {
             global: Global::default(),
-            aggregations: Aggregations::new(all)
+            aggregations: Aggregations::new(all, size)
         }
     }
 }
@@ -211,12 +213,12 @@ pub struct Aggregations {
 }
 
 impl Aggregations {
-    pub fn new(aggregations: &str) -> Aggregations {
+    pub fn new(aggregations: &str, size: Option<u64>) -> Aggregations {
         Aggregations {
-            package_attr_set: PackageAttrSet2::new(aggregations),
-            package_license_set: PackageLicenseSet2::new(aggregations),
-            package_maintainers_set: PackageMaintainersSet2::new(aggregations),
-            package_platforms: PackagePlatforms2::new(aggregations)
+            package_attr_set: PackageAttrSet2::new(aggregations, size),
+            package_license_set: PackageLicenseSet2::new(aggregations, size),
+            package_maintainers_set: PackageMaintainersSet2::new(aggregations, size),
+            package_platforms: PackagePlatforms2::new(aggregations, size)
         }
     }
 }
@@ -228,9 +230,9 @@ pub struct PackageAttrSet2 {
 }
 
 impl PackageAttrSet2 {
-    pub fn new(attr: &str) -> PackageAttrSet2 {
+    pub fn new(attr: &str, size: Option<u64>) -> PackageAttrSet2 {
         PackageAttrSet2 {
-            terms: AggsTerms::new(attr).unwrap()
+            terms: AggsTerms::new(attr, size).unwrap()
         }
     }
 }
@@ -242,9 +244,9 @@ pub struct PackageLicenseSet2 {
 }
 
 impl PackageLicenseSet2 {
-    pub fn new(license: &str) -> PackageLicenseSet2 {
+    pub fn new(license: &str, size: Option<u64>) -> PackageLicenseSet2 {
         PackageLicenseSet2 {
-            terms: AggsTerms::new(license).unwrap()
+            terms: AggsTerms::new(license, size).unwrap()
         }
     }
 }
@@ -256,9 +258,9 @@ pub struct PackageMaintainersSet2 {
 }
 
 impl PackageMaintainersSet2 {
-    pub fn new(maintainers: &str) -> PackageMaintainersSet2 {
+    pub fn new(maintainers: &str, size: Option<u64>) -> PackageMaintainersSet2 {
         PackageMaintainersSet2 {
-            terms: AggsTerms::new(maintainers).unwrap()
+            terms: AggsTerms::new(maintainers, size).unwrap()
         }
     }
 }
@@ -270,9 +272,9 @@ pub struct PackagePlatforms2 {
 }
 
 impl PackagePlatforms2 {
-    pub fn new(platforms: &str) -> PackagePlatforms2 {
+    pub fn new(platforms: &str, size: Option<u64>) -> PackagePlatforms2 {
         PackagePlatforms2 {
-            terms: AggsTerms::new(platforms).unwrap()
+            terms: AggsTerms::new(platforms, size).unwrap()
         }
     }
 }

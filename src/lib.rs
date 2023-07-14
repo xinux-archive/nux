@@ -12,11 +12,11 @@ mod tests {
             from: 0,
             size: 50,
             sort: vec![Sort::new("asc")],
-            aggs: Aggs::default(),
-            query: Query::default(),
+            aggs: Aggs::new(""),
+            query: Query::new(""),
         };
 
-        let expected = Request::new("asc");
+        let expected = Request::new("asc", "", "");
         assert_eq!(request, expected);
     }
 
